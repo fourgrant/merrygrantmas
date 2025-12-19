@@ -1,6 +1,6 @@
 # Merry Grantmas
 
-A festive single-page site that collects the Grant family's holiday songs and playlists in one place. It highlights the 2024 song “Ting-a-ling,” links out to streaming playlists, and preserves a songbook of past originals.
+A festive single-page site that collects the Grant family's holiday songs and playlists in one place. It highlights the 2025 song “Ting-a-ling,” links out to streaming playlists, and preserves a songbook of past originals.
 
 ## Features
 - **Featured track player:** Custom play/pause button controlling the bundled `ting-a-ling.mp3` audio with accessible labels.
