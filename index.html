@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Merry Grantmas</title>
+  <meta name="description" content="Christmas songs + holiday cheer." />
+  <style>
+    body { font-family: -apple-system, system-ui, sans-serif; margin: 0; padding: 48px 18px; background:#0b1220; color:#fff; }
+    .wrap { max-width: 760px; margin: 0 auto; }
+    h1 { font-size: 42px; margin: 0 0 12px; }
+    p { line-height: 1.5; opacity: .9; }
+    a { color: #8bd3ff; }
+    .card { background: rgba(255,255,255,.08); border-radius: 16px; padding: 22px; margin: 18px 0; }
+    .btns a { display:inline-block; margin: 10px 10px 0 0; padding: 12px 14px; border-radius: 12px; background: rgba(255,255,255,.14); text-decoration:none; }
+    .btns a:hover { background: rgba(255,255,255,.22); }
+    footer { margin-top: 34px; font-size: 13px; opacity: .7; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <h1>Merry Grantmas 🎄</h1>
+    <p>Here are our Christmas songs. Thanks for listening and hope you have a great holiday.</p>
+
+    <div class="card">
+      <h2>Listen</h2>
+      <div class="btns">
+        <a href="https://example.com" target="_blank" rel="noopener">Spotify Playlist</a>
+        <a href="https://example.com" target="_blank" rel="noopener">Apple Music</a>
+        <a href="https://example.com" target="_blank" rel="noopener">YouTube</a>
+      </div>
+    </div>
+
+    <footer>
+      © <span id="y"></span> Grantmas
+    </footer>
+  </div>
+
+  <script>document.getElementById("y").textContent = new Date().getFullYear();</script>
+</body>
+</html>
