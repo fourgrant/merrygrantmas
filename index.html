@@ -54,61 +54,31 @@
       position:fixed; inset:0;
       pointer-events:none;
       z-index:0;
+      background-repeat: repeat;
     }
     .snowA{
-      --flake-1: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none' stroke='%238c5dff' stroke-width='4' stroke-linecap='round' stroke-linejoin='round'%3E%0A%20%20%3Cpath d='M32 4v56M18 16l14 10 14-10M18 48l14-10 14 10M4 32h56M16 18l10 14-10 14M48 18l-10 14 10 14'/%3E%0A%20%20%3Cpath d='M22 12l3 10-10-3M42 12l-3 10 10-3M22 52l3-10-10 3M42 52l-3-10 10 3'/%3E%0A%3C/svg%3E");
-      --flake-2: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none' stroke='%23ba8fff' stroke-width='3.4' stroke-linecap='round' stroke-linejoin='round'%3E%0A%20%20%3Cpath d='M32 6v52M20 16l12 9 12-9M20 48l12-9 12 9M6 32h52M18 18l10 14-10 14M46 18l-10 14 10 14'/%3E%0A%20%20%3Cpath d='M22 14l3 8-8-3M42 14l-3 8 8-3M22 50l3-8-8 3M42 50l-3-8 8 3'/%3E%0A%3C/svg%3E");
-      background-image:
-        var(--flake-1),
-        var(--flake-2),
-        radial-gradient(circle, rgba(255,255,255,.78) 0 1.6px, transparent 3px);
-      background-size: 220px 220px, 170px 170px, 200px 200px;
-      transform: translate(var(--swayA, 0), var(--fallA, 0));
-      animation:
-        fallA 14s linear infinite,
-        swayA 9s ease-in-out infinite;
-      animation-delay: -2s, -1s;
-      opacity:.86;
+      background-image: radial-gradient(circle, rgba(255,255,255,.85) 0 1px, transparent 3px);
+      background-size: 160px 160px;
+      transform: translateY(var(--fallA, 0));
+      animation: fallA 16s linear infinite;
+      opacity:.5;
     }
     .snowB{
-      --flake-3: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none' stroke='%237852d6' stroke-width='3.2' stroke-linecap='round' stroke-linejoin='round'%3E%0A%20%20%3Cpath d='M32 4v56M20 14l12 10 12-10M20 50l12-10 12 10M4 32h56M18 18l11 14-11 14M46 18l-11 14 11 14'/%3E%0A%20%20%3Cpath d='M24 12l2 8-8-2M40 12l-2 8 8-2M24 52l2-8-8 2M40 52l-2-8 8 2'/%3E%0A%3C/svg%3E");
-      --flake-4: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64' fill='none' stroke='%23c7a6ff' stroke-width='2.8' stroke-linecap='round' stroke-linejoin='round'%3E%0A%20%20%3Cpath d='M32 6v52M22 15l10 9 10-9M22 49l10-9 10 9M6 32h52M18 20l12 12-12 12M46 20l-12 12 12 12'/%3E%0A%20%20%3Cpath d='M24 14l3 7-7-3M40 14l-3 7 7-3M24 50l3-7-7 3M40 50l-3-7 7 3'/%3E%0A%3C/svg%3E");
-      background-image:
-        var(--flake-3),
-        var(--flake-4);
-      background-size: 130px 130px, 105px 105px;
-      transform: translate(var(--swayB, 0), var(--fallB, 0));
-      animation:
-        fallB 10s linear infinite,
-        swayB 7s ease-in-out infinite;
-      animation-delay: -3s, -1.6s;
-      opacity:.65;
+      background-image: radial-gradient(circle, rgba(255,255,255,.78) 0 1px, transparent 3px);
+      background-size: 120px 120px;
+      transform: translateY(var(--fallB, 0));
+      animation: fallB 22s linear infinite;
+      opacity:.35;
     }
     @keyframes fallA{
-      0%{ --fallA: -220px; }
-      40%{ --fallA: 160px; }
-      75%{ --fallA: 420px; }
-      100%{ --fallA: 600px; }
-    }
-    @keyframes swayA{
-      0%{ --swayA: -14px; }
-      20%{ --swayA: 10px; }
-      45%{ --swayA: -6px; }
-      70%{ --swayA: 16px; }
-      100%{ --swayA: -14px; }
+      0%{ --fallA: -120px; }
+      50%{ --fallA: 180px; }
+      100%{ --fallA: 520px; }
     }
     @keyframes fallB{
-      0%{ --fallB: -260px; }
-      35%{ --fallB: 120px; }
-      68%{ --fallB: 380px; }
-      100%{ --fallB: 620px; }
-    }
-    @keyframes swayB{
-      0%{ --swayB: 12px; }
-      30%{ --swayB: -10px; }
-      55%{ --swayB: 18px; }
-      82%{ --swayB: -6px; }
-      100%{ --swayB: 12px; }
+      0%{ --fallB: -160px; }
+      50%{ --fallB: 140px; }
+      100%{ --fallB: 520px; }
     }
 
     /* string lights across the top */
@@ -424,15 +394,11 @@
       border-radius: 18px;
       border: 1px solid rgba(16,50,58,.12);
       overflow:hidden;
+      padding: 6px;
       background:
         radial-gradient(500px 260px at 15% 10%, rgba(193,18,47,.10), transparent 60%),
         radial-gradient(500px 260px at 85% 40%, rgba(11,122,59,.10), transparent 60%),
         linear-gradient(180deg, rgba(255,255,255,.92), rgba(255,255,255,.86));
-    }
-    .songlist-inner{
-      max-height: 520px;
-      overflow:auto;
-      padding: 6px;
     }
     .songrow{
       display:grid;
@@ -531,8 +497,8 @@
       </div>
 
       <div class="sub">
-       <p> Every year we send out holiday songs to friends and family. Since this is a magical time of year we usually feel like it's appropriate to sing about magical things. These things include candy powered sleds, Christmas dragons, people turning into Christmas trees and mellow double guitar solos played by none other than Kris Kringle himself.</p>
-       <p>Our new song this year is "Ting-a-ling" celebrating the coolest sound this time of year.</p>
+       <p>Holiday songs for the people we love, inspired by candy sleds, Christmas dragons, and mellow double guitar solos from Kris Kringle himself.</p>
+       <p>New this year: “Ting-a-ling,” a tribute to the sweetest sound of the season.</p>
       </div>
 
       <a class="listen-cta" href="#new-song">Listen</a>
@@ -611,11 +577,10 @@
           <div class="songbook" id="songbook">
             <div class="songbook-head">
               <h2>Past years songbook</h2>
-              <div class="hint">Scroll for the deep cuts</div>
+              <div class="hint">All the deep cuts in one place</div>
             </div>
 
             <div class="songlist" role="region" aria-label="Songbook list">
-              <div class="songlist-inner">
 
                 <div class="songrow">
                   <div class="num">★</div>
@@ -650,7 +615,6 @@
                 <div class="songrow"><div class="num">22</div><div class="titleline"><a class="songtitle" href="https://robbygrant.com/track/christmas-cry" target="_blank" rel="noopener">Christmas Cry</a></div><div class="time">02:08</div></div>
                 <div class="songrow"><div class="num">23</div><div class="titleline"><a class="songtitle" href="https://robbygrant.com/track/christmas-spirits" target="_blank" rel="noopener">Christmas Spirits</a></div><div class="time">03:30</div></div>
 
-              </div>
             </div>
 
             <div class="songnote">
