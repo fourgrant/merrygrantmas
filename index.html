@@ -63,7 +63,11 @@
         var(--flake-2),
         radial-gradient(circle, rgba(255,255,255,.78) 0 1.6px, transparent 3px);
       background-size: 220px 220px, 170px 170px, 200px 200px;
-      animation: driftA 12s linear infinite;
+      transform: translate(var(--swayA, 0), var(--fallA, 0));
+      animation:
+        fallA 14s linear infinite,
+        swayA 9s ease-in-out infinite;
+      animation-delay: -2s, -1s;
       opacity:.86;
     }
     .snowB{
@@ -72,12 +76,40 @@
       background-image:
         var(--flake-3),
         var(--flake-4);
-      background-size: 160px 160px, 130px 130px;
-      animation: driftB 8s linear infinite;
+      background-size: 130px 130px, 105px 105px;
+      transform: translate(var(--swayB, 0), var(--fallB, 0));
+      animation:
+        fallB 10s linear infinite,
+        swayB 7s ease-in-out infinite;
+      animation-delay: -3s, -1.6s;
       opacity:.65;
     }
-    @keyframes driftA{ from{ transform:translateY(-180px);} to{ transform:translateY(520px);} }
-    @keyframes driftB{ from{ transform:translateY(-260px);} to{ transform:translateY(640px);} }
+    @keyframes fallA{
+      0%{ --fallA: -220px; }
+      40%{ --fallA: 160px; }
+      75%{ --fallA: 420px; }
+      100%{ --fallA: 600px; }
+    }
+    @keyframes swayA{
+      0%{ --swayA: -14px; }
+      20%{ --swayA: 10px; }
+      45%{ --swayA: -6px; }
+      70%{ --swayA: 16px; }
+      100%{ --swayA: -14px; }
+    }
+    @keyframes fallB{
+      0%{ --fallB: -260px; }
+      35%{ --fallB: 120px; }
+      68%{ --fallB: 380px; }
+      100%{ --fallB: 620px; }
+    }
+    @keyframes swayB{
+      0%{ --swayB: 12px; }
+      30%{ --swayB: -10px; }
+      55%{ --swayB: 18px; }
+      82%{ --swayB: -6px; }
+      100%{ --swayB: 12px; }
+    }
 
     /* string lights across the top */
     .lights{
