@@ -3,17 +3,15 @@
 <head>
   <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-M75HKBLCDD"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-
-    gtag('config', 'G-M75HKBLCDD');
-  </script>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Merry Grantmas</title>
   <meta name="description" content="Grant Family holiday songs + playlists. New this year: Ting-a-ling, and 20+ years of original Christmas songs." />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&family=Nunito:wght@400;600;700;800;900&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&family=Nunito:wght@400;600;700;800;900&display=swap">
 
   <!-- Social sharing -->
   <meta property="og:type" content="website" />
@@ -27,8 +25,6 @@
   <meta name="twitter:image" content="https://merrygrantmas.com/assets/img/grantmas.jpg" />
 
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Mountains+of+Christmas:wght@700&family=Nunito:wght@400;600;700;800;900&display=swap');
-
     :root{
       --red:#c1122f;
       --green:#0b7a3b;
@@ -528,7 +524,7 @@
     <div class="grid">
       <section class="card" aria-label="Grant family photo">
         <div class="ribbon"></div>
-        <img class="photo" src="assets/img/grantmas.jpg" alt="Grant family holiday photo" />
+        <img class="photo" src="assets/img/grantmas.jpg" alt="Grant family holiday photo" width="1024" height="1228" loading="lazy" decoding="async" />
         <div class="photo-cap">
           <span>👋 Hello from the Grants</span>
           <span id="year"></span>
@@ -668,6 +664,14 @@
 
     audio.addEventListener("pause", () => playBtn.textContent = "▶ Play");
     audio.addEventListener("play", () => playBtn.textContent = "⏸ Pause");
+  </script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    window.addEventListener('load', () => {
+      gtag('js', new Date());
+      gtag('config', 'G-M75HKBLCDD');
+    });
   </script>
 </body>
 </html>
