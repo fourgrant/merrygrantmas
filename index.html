@@ -96,12 +96,15 @@
       align-items:flex-start;
     }
     .bulb{
+      --bulb-color: var(--red);
       width:14px; height:20px;
       border-radius: 999px 999px 10px 10px;
-      background: var(--red);
+      background-color: var(--bulb-color);
+      background-image: linear-gradient(180deg, rgba(255,255,255,.28), rgba(0,0,0,.08));
       box-shadow: 0 0 0 3px rgba(255,255,255,.75), 0 10px 26px rgba(0,0,0,.10);
       position:relative;
       animation: twinkle 2.6s ease-in-out infinite;
+      overflow: visible;
     }
     .bulb:before{
       content:"";
@@ -111,10 +114,19 @@
       border-radius: 6px 6px 3px 3px;
       background: rgba(16,50,58,.28);
     }
-    .bulb:nth-child(3n){ background: #10a35a; animation-duration: 2.1s; }
-    .bulb:nth-child(4n){ background: var(--gold); animation-duration: 2.8s; }
-    .bulb:nth-child(5n){ background: #4aa3ff; animation-duration: 2.3s; }
-    .bulb:nth-child(6n){ background: #b66dff; animation-duration: 2.7s; }
+    .bulb:after{
+      content:"";
+      position:absolute; inset:-6px;
+      border-radius: 999px 999px 12px 12px;
+      background: var(--bulb-color);
+      filter: blur(10px);
+      opacity:.5;
+      z-index:-1;
+    }
+    .bulb:nth-child(3n){ --bulb-color: #10a35a; animation-duration: 2.1s; }
+    .bulb:nth-child(4n){ --bulb-color: var(--gold); animation-duration: 2.8s; }
+    .bulb:nth-child(5n){ --bulb-color: #4aa3ff; animation-duration: 2.3s; }
+    .bulb:nth-child(6n){ --bulb-color: #b66dff; animation-duration: 2.7s; }
     @keyframes twinkle{
       0%,100%{ transform: translateY(0) scale(1); filter: brightness(1); }
       50%{ transform: translateY(2px) scale(1.07); filter: brightness(1.22); }
