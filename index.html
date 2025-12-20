@@ -308,6 +308,20 @@
 
     .inner{ padding: 18px; }
 
+    .new-song{
+      margin-top: 14px;
+      padding: 16px;
+      border-radius: 22px;
+      background:
+        radial-gradient(700px 320px at 0% 0%, rgba(193,18,47,.12), transparent 60%),
+        radial-gradient(700px 320px at 100% 20%, rgba(11,122,59,.12), transparent 60%),
+        linear-gradient(180deg, rgba(255,255,255,.94), rgba(255,255,255,.86));
+      border: 1px solid rgba(16,50,58,.12);
+      box-shadow: 0 16px 40px rgba(0,0,0,.08);
+      display:flex;
+      flex-direction:column;
+      gap: 12px;
+    }
     .callout{
       padding: 14px;
       border-radius: 18px;
@@ -322,7 +336,6 @@
     .callout .small{ margin-top: 6px; color: rgba(16,50,58,.72); font-size: 14px; }
 
     .player{
-      margin-top: 12px;
       padding: 12px;
       border-radius: 18px;
       background: rgba(255,255,255,.86);
@@ -357,7 +370,6 @@
     audio{ width: 100%; }
 
     .lyrics{
-      margin-top: 12px;
       border-radius: 14px;
       border: 1px solid rgba(16,50,58,.12);
       background: linear-gradient(180deg, rgba(255,255,255,.90), rgba(255,255,255,.82));
@@ -578,60 +590,62 @@
         <div class="ribbon red"></div>
         <div class="inner">
 
-          <div class="callout" id="new-song">
-            <div><strong>New Christmas song this year:</strong> “Ting-a-ling”</div>
-            <div class="small">Press play below, then explore the songbook for the deep cuts.</div>
-          </div>
+          <div class="new-song">
+            <div class="callout" id="new-song">
+              <div><strong>New Christmas song this year:</strong> “Ting-a-ling”</div>
+              <div class="small">Press play below, then explore the songbook for the deep cuts.</div>
+            </div>
 
-          <div class="player" aria-label="Ting-a-ling audio player" id="ting-a-ling">
-            <div class="player-top">
-              <div class="track">
-                <div class="name">Ting-a-ling</div>
-                <div class="meta">New this year • Grant Family Xmas</div>
+            <div class="player" aria-label="Ting-a-ling audio player" id="ting-a-ling">
+              <div class="player-top">
+                <div class="track">
+                  <div class="name">Ting-a-ling</div>
+                  <div class="meta">New this year • Grant Family Xmas</div>
+                </div>
+                <button class="playBtn" id="playBtn" type="button">▶ Play</button>
               </div>
-              <button class="playBtn" id="playBtn" type="button">▶ Play</button>
+
+              <audio id="audio" preload="metadata" controls>
+                <source src="assets/audio/ting-a-ling.mp3" type="audio/mpeg" />
+                Your browser doesn’t support the audio element.
+              </audio>
             </div>
 
-            <audio id="audio" preload="metadata" controls>
-              <source src="assets/audio/ting-a-ling.mp3" type="audio/mpeg" />
-              Your browser doesn’t support the audio element.
-            </audio>
+            <details class="lyrics" id="ting-a-ling-lyrics">
+              <summary>Lyrics</summary>
+              <div class="lyrics-content">
+                <p>
+                  Hark, o’er there ye can hear<br />
+                  A gentle ringing in your ear<br />
+                  It’s sounds of joy and things<br />
+                  It must be a Christmas ting a ling
+                </p>
+                <p>Ting-a-ling Ting-a-ling Ting-a-ling-a-ling-a</p>
+                <p>
+                  O Where Thou Art I got no idea<br />
+                  been walking through the ice and snow just to see ya<br />
+                  It’s sounds of joy and things<br />
+                  It must be just a Christmas ting a ling
+                </p>
+                <p>Ting-a-ling Ting-a-ling Ting-a-ling-a-ling-a</p>
+                <p>
+                  All hail ye angels that will be singing<br />
+                  And yorn ears they shall be ringing<br />
+                  It’s sounds of joy and things
+                  It must be just a Christmas ting a ling
+                </p>
+                <p>Ting-a-ling Ting-a-ling Ting-a-ling-a-ling-a</p>
+                <p>
+                  It’s sounds of joy and things
+                  It must be Christmas ting a ling
+                </p>
+                <p>
+                  Ting-a-ling Ting-a-ling Ting-a-ling-a-ling-a<br />
+                  Ting-a-ling Ting-a-ling Ting-a-ling-a-ling-a
+                </p>
+              </div>
+            </details>
           </div>
-
-          <details class="lyrics" id="ting-a-ling-lyrics">
-            <summary>Lyrics</summary>
-            <div class="lyrics-content">
-              <p>
-                Hark, o’er there ye can hear<br />
-                A gentle ringing in your ear<br />
-                It’s sounds of joy and things<br />
-                It must be a Christmas ting a ling
-              </p>
-              <p>Ting-a-ling Ting-a-ling Ting-a-ling-a-ling-a</p>
-              <p>
-                O Where Thou Art I got no idea<br />
-                been walking through the ice and snow just to see ya<br />
-                It’s sounds of joy and things<br />
-                It must be just a Christmas ting a ling
-              </p>
-              <p>Ting-a-ling Ting-a-ling Ting-a-ling-a-ling-a</p>
-              <p>
-                All hail ye angels that will be singing<br />
-                And yorn ears they shall be ringing<br />
-                It’s sounds of joy and things<br />
-                It must be just a Christmas ting a ling
-              </p>
-              <p>Ting-a-ling Ting-a-ling Ting-a-ling-a-ling-a</p>
-              <p>
-                It’s sounds of joy and things<br />
-                It must be Christmas ting a ling
-              </p>
-              <p>
-                Ting-a-ling Ting-a-ling Ting-a-ling-a-ling-a<br />
-                Ting-a-ling Ting-a-ling Ting-a-ling-a-ling-a
-              </p>
-            </div>
-          </details>
 
           <div class="small">Pick your favorite stream below—make yourself at home and start listening!</div>
 
