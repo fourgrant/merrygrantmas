@@ -31,6 +31,8 @@
       --white:#ffffff;
       --cream:#fff7e6;
       --ink:#10323a;
+      --heading:#0b3a33;
+      --ink-strong:#0f3f37;
       --card:rgba(255,255,255,.78);
       --border:rgba(16,50,58,.12);
       --shadow:0 18px 55px rgba(0,0,0,.14);
@@ -38,6 +40,13 @@
       --radius:26px;
       --gold:#ffd45a;
       --link:#0a5bd6;
+      --muted: rgba(16,50,58,.72);
+      --muted-strong: rgba(10,35,35,.90);
+      --bg:
+        radial-gradient(1100px 700px at 15% 8%, rgba(193,18,47,.16), transparent 60%),
+        radial-gradient(1100px 700px at 90% 12%, rgba(11,122,59,.16), transparent 60%),
+        radial-gradient(900px 600px at 60% 85%, rgba(255,210,90,.18), transparent 55%),
+        linear-gradient(180deg, #f7fbff, #ffffff);
     }
 
     *{ box-sizing:border-box; }
@@ -46,12 +55,9 @@
       margin:0;
       font-family: "Nunito", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color: var(--ink);
-      background:
-        radial-gradient(1100px 700px at 15% 8%, rgba(193,18,47,.16), transparent 60%),
-        radial-gradient(1100px 700px at 90% 12%, rgba(11,122,59,.16), transparent 60%),
-        radial-gradient(900px 600px at 60% 85%, rgba(255,210,90,.18), transparent 55%),
-        linear-gradient(180deg, #f7fbff, #ffffff);
+      background: var(--bg);
       overflow-x:hidden;
+      transition: background .4s ease, color .3s ease;
     }
 
     /* ❄️ Light snow */
@@ -166,6 +172,22 @@
       .wrap{ padding-top: 92px; }
     }
 
+    /* ===== Theme switcher ===== */
+    .switcher-head{ display:flex; flex-direction:column; gap:4px; align-items:flex-start; }
+    .switcher-label{ font-weight: 900; letter-spacing:.2px; display:inline-flex; gap:8px; align-items:center; padding:6px 12px; border-radius:999px; background: rgba(255,255,255,.78); border:1px solid var(--border); box-shadow: var(--shadow2); }
+    .switcher-sub{ margin:4px 0 0; color: var(--muted); max-width: 78ch; }
+    .design-switcher{ margin: 24px 0 6px; padding: 14px; border-radius: 18px; background: rgba(255,255,255,.74); border: 1px solid var(--border); box-shadow: var(--shadow2); backdrop-filter: blur(6px); }
+    .switch-grid{ display:grid; grid-template-columns: repeat(auto-fit, minmax(220px,1fr)); gap:10px; margin-top: 12px; }
+    .theme-btn{ position:relative; overflow:hidden; border-radius: 16px; border:1px solid rgba(16,50,58,.14); background: rgba(255,255,255,.90); padding:14px; text-align:left; color: var(--ink); display:grid; gap:6px; box-shadow: 0 10px 32px rgba(0,0,0,.08); cursor:pointer; transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease; }
+    .theme-btn:hover{ transform: translateY(-2px); box-shadow: 0 16px 40px rgba(0,0,0,.12); }
+    .theme-btn[aria-pressed="true"]{ border-color: rgba(11,122,59,.45); box-shadow: 0 16px 46px rgba(11,122,59,.18); }
+    .theme-badge{ display:inline-flex; gap:6px; align-items:center; padding:4px 10px; border-radius:999px; background: rgba(16,50,58,.08); font-weight: 900; font-size: 12px; letter-spacing:.3px; }
+    .theme-title{ font-weight: 900; letter-spacing:.2px; font-size:16px; }
+    .theme-desc{ font-size: 14px; color: var(--muted); line-height: 1.45; }
+    .swatch-row{ display:flex; gap:6px; }
+    .swatch{ width:20px; height:20px; border-radius:8px; border:1px solid rgba(16,50,58,.12); box-shadow: inset 0 0 0 1px rgba(255,255,255,.6); }
+    @media (max-width: 540px){ .switcher-head{ align-items:flex-start; } }
+
     header{
       text-align:center;
       margin-bottom: 10px;
@@ -189,7 +211,7 @@
       font-size: clamp(44px, 6.2vw, 76px);
       letter-spacing: .5px;
       line-height: 1;
-      color: #0b3a33;
+      color: var(--heading);
       text-shadow: 0 10px 40px rgba(0,0,0,.10);
     }
 
@@ -212,7 +234,7 @@
       font-family: "Nunito", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       font-weight: 700;
       letter-spacing: .1px;
-      color: #0f3f37;
+      color: var(--ink-strong);
       text-shadow: 0 2px 14px rgba(16,50,58,.12);
     }
 
@@ -223,7 +245,7 @@
       font-weight: 900;
       letter-spacing: .2px;
       text-align:right;
-      color: rgba(16,50,58,.86);
+      color: var(--muted-strong);
     }
 
     .listen-cta{
@@ -301,7 +323,7 @@
       display:flex; justify-content:space-between; align-items:center;
       padding: 12px 14px;
       font-size: 13px;
-      color: rgba(16,50,58,.72);
+      color: var(--muted);
       background: rgba(255,255,255,.88);
       border-top: 1px solid var(--border);
     }
@@ -332,8 +354,8 @@
       border: 1px solid rgba(16,50,58,.14);
       box-shadow: 0 12px 40px rgba(0,0,0,.09);
     }
-    .callout strong{ color: rgba(10,35,35,.96); }
-    .callout .small{ margin-top: 6px; color: rgba(16,50,58,.72); font-size: 14px; }
+    .callout strong{ color: var(--muted-strong); }
+    .callout .small{ margin-top: 6px; color: var(--muted); font-size: 14px; }
 
     .player{
       padding: 12px;
@@ -350,7 +372,7 @@
       display:flex; flex-direction:column; gap: 2px;
     }
     .track .name{ font-weight: 900; letter-spacing:.2px; }
-    .track .meta{ font-size: 13px; color: rgba(16,50,58,.68); }
+    .track .meta{ font-size: 13px; color: var(--muted); }
 
     .playBtn{
       border: 0;
@@ -391,7 +413,7 @@
     .lyrics summary:after{
       content:"+";
       font-weight: 900;
-      color: rgba(16,50,58,.68);
+      color: var(--muted);
       transition: transform .12s ease;
     }
     .lyrics[open] summary:after{ content:"–"; transform: translateY(-1px); }
@@ -408,7 +430,7 @@
     .buttons-hint{
       margin: 16px 4px 8px;
       font-weight: 800;
-      color: rgba(10,35,35,.90);
+      color: var(--muted-strong);
       line-height: 1.4;
     }
 
@@ -435,7 +457,7 @@
     }
     .btn .left{ display:flex; flex-direction:column; gap:3px; }
     .btn .title{ font-weight: 900; letter-spacing:.2px; }
-    .btn .subtxt{ font-size: 13px; color: rgba(16,50,58,.68); }
+    .btn .subtxt{ font-size: 13px; color: var(--muted); }
     .btn .arrow{ font-size: 18px; opacity:.75; }
 
     .btn.bandcamp{ border-left: 10px solid #b66dff; }
@@ -463,7 +485,7 @@
     }
     .songbook .hint{
       font-size: 13px;
-      color: rgba(16,50,58,.70);
+      color: var(--muted);
     }
     .songlist{
       border-radius: 18px;
@@ -528,30 +550,123 @@
     .time{
       text-align:right;
       font-variant-numeric: tabular-nums;
-      color: rgba(16,50,58,.72);
+      color: var(--muted);
       font-weight: 800;
     }
     .songnote{
       margin-top: 10px;
       font-size: 13px;
-      color: rgba(16,50,58,.72);
+      color: var(--muted);
       display:flex;
       justify-content:space-between;
       gap:10px;
       flex-wrap:wrap;
     }
-    .songnote a{ color: rgba(16,50,58,.85); }
+    .songnote a{ color: var(--muted-strong); }
 
     footer{
       margin-top: 18px;
       text-align:center;
-      color: rgba(16,50,58,.72);
+      color: var(--muted);
       font-size: 13px;
     }
+
+    /* Theme palettes */
+    body.theme-holly{
+      --red:#c1122f;
+      --green:#0b7a3b;
+      --heading:#0b3a33;
+      --ink:#10323a;
+      --ink-strong:#0f3f37;
+      --muted: rgba(16,50,58,.72);
+      --muted-strong: rgba(10,35,35,.90);
+      --card:rgba(255,255,255,.78);
+      --border:rgba(16,50,58,.12);
+      --link:#0a5bd6;
+      --bg:
+        radial-gradient(1100px 700px at 15% 8%, rgba(193,18,47,.16), transparent 60%),
+        radial-gradient(1100px 700px at 90% 12%, rgba(11,122,59,.16), transparent 60%),
+        radial-gradient(900px 600px at 60% 85%, rgba(255,210,90,.18), transparent 55%),
+        linear-gradient(180deg, #f7fbff, #ffffff);
+    }
+    body.theme-candlelight{
+      --red:#b22b29;
+      --green:#0d6b40;
+      --heading:#7a2b11;
+      --ink:#3c2a20;
+      --ink-strong:#2a1c15;
+      --muted: rgba(60,42,32,.76);
+      --muted-strong: rgba(42,28,21,.92);
+      --card: rgba(255,247,230,.82);
+      --border: rgba(58,37,25,.16);
+      --link:#b2551d;
+      --bg:
+        radial-gradient(1200px 520px at 18% 16%, rgba(178,43,41,.18), transparent 60%),
+        radial-gradient(1200px 620px at 82% 12%, rgba(173,118,45,.22), transparent 60%),
+        radial-gradient(1200px 520px at 50% 88%, rgba(13,107,64,.12), transparent 55%),
+        linear-gradient(180deg, #fff4df, #fbe8d0 40%, #fff9f0);
+    }
+    body.theme-neon{
+      --red:#ff3b7f;
+      --green:#12d68d;
+      --heading:#081529;
+      --ink:#0c1734;
+      --ink-strong:#0f2146;
+      --muted: rgba(232,237,255,.76);
+      --muted-strong: rgba(232,237,255,.92);
+      --card: rgba(14,18,53,.82);
+      --border: rgba(255,255,255,.12);
+      --link:#7ad6ff;
+      --bg:
+        radial-gradient(1100px 560px at 20% 18%, rgba(122,214,255,.25), transparent 60%),
+        radial-gradient(1100px 560px at 80% 10%, rgba(255,59,127,.25), transparent 60%),
+        radial-gradient(1200px 620px at 50% 100%, rgba(18,214,141,.18), transparent 58%),
+        linear-gradient(180deg, #080a1b, #0d1028 50%, #04050f);
+      color: #e8edff;
+    }
+    body.theme-cosmic{
+      --red:#ff5c4d;
+      --green:#00f0ff;
+      --heading:#f7f3ff;
+      --ink:#e8edff;
+      --ink-strong:#fefefe;
+      --muted: rgba(231,237,255,.78);
+      --muted-strong: rgba(255,255,255,.94);
+      --card: rgba(255,255,255,.08);
+      --border: rgba(255,255,255,.26);
+      --link:#00f0ff;
+      --bg:
+        radial-gradient(1400px 520px at 16% 12%, rgba(255,92,77,.26), transparent 60%),
+        radial-gradient(1400px 520px at 82% 16%, rgba(0,240,255,.26), transparent 60%),
+        radial-gradient(1200px 620px at 50% 90%, rgba(255,255,255,.14), transparent 58%),
+        linear-gradient(180deg, #0a0018, #0d0b2e 40%, #030511);
+      color: #f7f3ff;
+    }
+
+    /* Dark theme support */
+    body.theme-neon :where(.design-switcher,.card,.btn,.callout,.player,.lyrics,.songbook,.songlist,.songrow){
+      background: var(--card);
+      border-color: var(--border);
+      color: var(--ink);
+    }
+    body.theme-cosmic :where(.design-switcher,.card,.btn,.callout,.player,.lyrics,.songbook,.songlist,.songrow){
+      background: var(--card);
+      border-color: var(--border);
+      color: var(--ink);
+      box-shadow: 0 18px 48px rgba(0,0,0,.35);
+    }
+    body.theme-neon :where(.switcher-sub,.theme-desc,.photo-cap,.callout .small,.player .meta,.btn .subtxt,.songbook .hint,.buttons-hint,.time,.songnote,.songnote a,.lyrics summary,.titleline,.songtitle),
+    body.theme-cosmic :where(.switcher-sub,.theme-desc,.photo-cap,.callout .small,.player .meta,.btn .subtxt,.songbook .hint,.buttons-hint,.time,.songnote,.songnote a,.lyrics summary,.titleline,.songtitle){
+      color: var(--muted);
+    }
+    body.theme-neon :where(.songnote a,.switcher-label,.theme-badge),
+    body.theme-cosmic :where(.songnote a,.switcher-label,.theme-badge){ color: var(--muted-strong); }
+    body.theme-neon .callout strong,
+    body.theme-cosmic .callout strong{ color: var(--muted-strong); }
   </style>
 </head>
 
-<body>
+<body class="theme-holly">
   <div class="snowA" aria-hidden="true"></div>
   <div class="snowB" aria-hidden="true"></div>
 
@@ -571,12 +686,61 @@
         <h1>Happy Holidays</h1>
       </div>
 
-          <div class="sub">
-           <p>For more than twenty years, we’ve been sharing original Christmas songs with family and friends—little snapshots of where we are each year.</p>
+      <div class="sub">
+        <p>For more than twenty years, we’ve been sharing original Christmas songs with family and friends—little snapshots of where we are each year.</p>
 
         <p>These songs are for the people we love, inspired by candy sleds, Christmas dragons, and the occasional mellow double-guitar solo from Kris Kringle himself.</p>
-         <span class="signature">Love - Rae, Robby, Five, Sadie, Emma and Leo</span>
+        <span class="signature">Love - Rae, Robby, Five, Sadie, Emma and Leo</span>
+      </div>
+
+      <div class="design-switcher" role="group" aria-label="Choose a holiday layout">
+        <div class="switcher-head">
+          <span class="switcher-label">Alternate designs 🎨</span>
+          <p class="switcher-sub">Tap a card to instantly restyle the page—two cozy classics, one playful curveball, and one over-the-top showstopper. All four stay mobile-friendly.</p>
         </div>
+        <div class="switch-grid">
+          <button class="theme-btn" type="button" data-theme="theme-holly" aria-pressed="true">
+            <span class="theme-badge">Traditional</span>
+            <div class="theme-title">Holly & Hearth</div>
+            <div class="theme-desc">Greens, reds, and snowy gradients that feel like a handwritten card by the fire.</div>
+            <div class="swatch-row" aria-hidden="true">
+              <div class="swatch" style="background:#c1122f"></div>
+              <div class="swatch" style="background:#0b7a3b"></div>
+              <div class="swatch" style="background:#ffd45a"></div>
+            </div>
+          </button>
+          <button class="theme-btn" type="button" data-theme="theme-candlelight" aria-pressed="false">
+            <span class="theme-badge">Traditional</span>
+            <div class="theme-title">Candlelit Classics</div>
+            <div class="theme-desc">Buttery creams, warm embers, and brass accents—like mulled cider and vinyl crackle.</div>
+            <div class="swatch-row" aria-hidden="true">
+              <div class="swatch" style="background:#b22b29"></div>
+              <div class="swatch" style="background:#0d6b40"></div>
+              <div class="swatch" style="background:#f5c57a"></div>
+            </div>
+          </button>
+          <button class="theme-btn" type="button" data-theme="theme-neon" aria-pressed="false">
+            <span class="theme-badge">Non‑traditional</span>
+            <div class="theme-title">Neon Sleighride</div>
+            <div class="theme-desc">Retro-future glow, synthwave gradients, and peppermint lasers for the playful set.</div>
+            <div class="swatch-row" aria-hidden="true">
+              <div class="swatch" style="background:#ff3b7f"></div>
+              <div class="swatch" style="background:#12d68d"></div>
+              <div class="swatch" style="background:#7ad6ff"></div>
+            </div>
+          </button>
+          <button class="theme-btn" type="button" data-theme="theme-cosmic" aria-pressed="false">
+            <span class="theme-badge">Mind‑blowing</span>
+            <div class="theme-title">North Star Odyssey</div>
+            <div class="theme-desc">Galactic auroras, shimmering stardust, and aurora flares worthy of Santa’s starship.</div>
+            <div class="swatch-row" aria-hidden="true">
+              <div class="swatch" style="background:#ff5c4d"></div>
+              <div class="swatch" style="background:#00f0ff"></div>
+              <div class="swatch" style="background:#f7f3ff"></div>
+            </div>
+          </button>
+        </div>
+      </div>
 
       <a class="listen-cta" href="#new-song">Listen</a>
     </header>
@@ -746,6 +910,18 @@
   </div>
 
   <script>
+    const themeButtons = document.querySelectorAll('.theme-btn');
+    const themes = ['theme-holly','theme-candlelight','theme-neon','theme-cosmic'];
+    const body = document.body;
+
+    themeButtons.forEach(btn => btn.addEventListener('click', () => {
+      const chosen = btn.dataset.theme;
+      if(!chosen) return;
+      themes.forEach(theme => body.classList.remove(theme));
+      body.classList.add(chosen);
+      themeButtons.forEach(b => b.setAttribute('aria-pressed', b === btn ? 'true' : 'false'));
+    }));
+
     document.getElementById("year").textContent = new Date().getFullYear();
 
     const audio = document.getElementById("audio");
