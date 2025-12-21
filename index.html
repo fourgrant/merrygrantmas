@@ -38,6 +38,11 @@
       --radius:26px;
       --gold:#ffd45a;
       --link:#0a5bd6;
+      --bg:
+        radial-gradient(1100px 700px at 15% 8%, rgba(193,18,47,.16), transparent 60%),
+        radial-gradient(1100px 700px at 90% 12%, rgba(11,122,59,.16), transparent 60%),
+        radial-gradient(900px 600px at 60% 85%, rgba(255,210,90,.18), transparent 55%),
+        linear-gradient(180deg, #f7fbff, #ffffff);
     }
 
     *{ box-sizing:border-box; }
@@ -46,13 +51,132 @@
       margin:0;
       font-family: "Nunito", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color: var(--ink);
-      background:
-        radial-gradient(1100px 700px at 15% 8%, rgba(193,18,47,.16), transparent 60%),
-        radial-gradient(1100px 700px at 90% 12%, rgba(11,122,59,.16), transparent 60%),
-        radial-gradient(900px 600px at 60% 85%, rgba(255,210,90,.18), transparent 55%),
-        linear-gradient(180deg, #f7fbff, #ffffff);
+      background: var(--bg);
       overflow-x:hidden;
+      transition: background .5s ease, color .2s ease;
     }
+
+    /* Theme variations */
+    body.theme-classic{
+      --red:#c1122f;
+      --green:#0b7a3b;
+      --ink:#10323a;
+      --card:rgba(255,255,255,.80);
+      --border:rgba(16,50,58,.12);
+      --link:#0a5bd6;
+      --bg:
+        radial-gradient(1200px 720px at 18% 8%, rgba(193,18,47,.16), transparent 60%),
+        radial-gradient(1200px 760px at 88% 12%, rgba(11,122,59,.18), transparent 60%),
+        linear-gradient(180deg, #f7fbff 0%, #ffffff 60%, #fff9f1 100%);
+    }
+
+    body.theme-midnight{
+      --red:#b71f3b;
+      --green:#164a3a;
+      --ink:#e8f2ff;
+      --card:rgba(14,28,45,.82);
+      --border:rgba(255,255,255,.10);
+      --link:#c8e9ff;
+      --gold:#ffd45a;
+      --bg:
+        radial-gradient(1200px 700px at 15% 10%, rgba(39,82,122,.24), transparent 58%),
+        radial-gradient(1100px 640px at 85% 20%, rgba(183,31,59,.18), transparent 58%),
+        linear-gradient(180deg, #050c19, #0c1a2f 40%, #0d243c 100%);
+      color: #e8f2ff;
+    }
+    body.theme-midnight .card,
+    body.theme-midnight .sub,
+    body.theme-midnight .songbook,
+    body.theme-midnight .songlist,
+    body.theme-midnight .songrow,
+    body.theme-midnight .btn,
+    body.theme-midnight .callout,
+    body.theme-midnight .new-song,
+    body.theme-midnight .player,
+    body.theme-midnight .lyrics,
+    body.theme-midnight .sub:before,
+    body.theme-midnight .sub:after{ background: rgba(12,24,40,.86); }
+    body.theme-midnight .wire{ border-top-color: rgba(255,255,255,.14); }
+    body.theme-midnight .bulb:before{ background: rgba(255,255,255,.22); }
+    body.theme-midnight .photo-cap{ background: rgba(7,16,28,.88); color: rgba(232,242,255,.72); }
+    body.theme-midnight h1{ color:#e8f2ff; }
+    body.theme-midnight .sub,
+    body.theme-midnight .buttons-hint,
+    body.theme-midnight .songnote,
+    body.theme-midnight .btn .subtxt,
+    body.theme-midnight .time,
+    body.theme-midnight .callout .small{ color: rgba(232,242,255,.80); }
+    body.theme-midnight .songtitle{ color:#c8e9ff; }
+
+    body.theme-marshmallow{
+      --red:#f74f89;
+      --green:#0c8d70;
+      --ink:#1b2a32;
+      --card:rgba(255,255,255,.90);
+      --border:rgba(15,60,70,.10);
+      --link:#0a6bb7;
+      --bg:
+        radial-gradient(900px 640px at 10% 12%, rgba(247,79,137,.22), transparent 60%),
+        radial-gradient(900px 640px at 80% 18%, rgba(12,141,112,.18), transparent 60%),
+        radial-gradient(800px 520px at 60% 84%, rgba(255,255,255,.74), transparent 70%),
+        linear-gradient(180deg, #fdf4ff, #f7fbff);
+    }
+    body.theme-marshmallow .lights{ display:none; }
+    body.theme-marshmallow .divider{ background: repeating-linear-gradient(90deg, #f74f89, #f74f89 12px, #ffdce8 12px, #ffdce8 24px); }
+    body.theme-marshmallow .title-pill{ background: rgba(255,255,255,.92); }
+
+    body.theme-aurora{
+      --red:#ff6b6b;
+      --green:#2dd4bf;
+      --ink:#e2f3ff;
+      --card:rgba(7,16,34,.82);
+      --border:rgba(45,212,191,.16);
+      --link:#93c5fd;
+      --bg: radial-gradient(1400px 900px at 20% 20%, rgba(147,197,253,.22), transparent 70%),
+        radial-gradient(1400px 900px at 80% 10%, rgba(45,212,191,.26), transparent 70%),
+        radial-gradient(1100px 840px at 50% 90%, rgba(255,107,107,.18), transparent 70%),
+        linear-gradient(180deg, #040914, #08182b 50%, #0d2238 100%);
+      color:#e8f7ff;
+    }
+    body.theme-aurora::before{
+      content:"";
+      position:fixed; inset:-10%;
+      background: conic-gradient(from 45deg, rgba(147,197,253,.2), rgba(45,212,191,.22), rgba(255,107,107,.16), rgba(147,197,253,.18));
+      mix-blend-mode: screen;
+      filter: blur(48px) saturate(1.4);
+      z-index:0;
+      opacity:.85;
+      animation: aurora 18s ease-in-out infinite alternate;
+      pointer-events:none;
+    }
+    @keyframes aurora{
+      0%{ transform: scale(1) rotate(0deg) translateY(0); opacity:.75; }
+      50%{ transform: scale(1.05) rotate(8deg) translateY(-18px); opacity:.92; }
+      100%{ transform: scale(1.02) rotate(-6deg) translateY(12px); opacity:.78; }
+    }
+    body.theme-aurora .lights{ display:none; }
+    body.theme-aurora .wire{ border-top-color: rgba(255,255,255,.08); }
+    body.theme-aurora .card,
+    body.theme-aurora .sub,
+    body.theme-aurora .songbook,
+    body.theme-aurora .songlist,
+    body.theme-aurora .songrow,
+    body.theme-aurora .btn,
+    body.theme-aurora .callout,
+    body.theme-aurora .new-song,
+    body.theme-aurora .player,
+    body.theme-aurora .lyrics,
+    body.theme-aurora .sub:before,
+    body.theme-aurora .sub:after{ background: rgba(5,14,30,.86); border-color: rgba(45,212,191,.22); box-shadow: 0 22px 60px rgba(0,0,0,.28); }
+    body.theme-aurora .photo-cap{ background: rgba(8,23,39,.88); color: rgba(232,247,255,.78); }
+    body.theme-aurora h1{ color: #e2f3ff; }
+    body.theme-aurora .sub,
+    body.theme-aurora .buttons-hint,
+    body.theme-aurora .songnote,
+    body.theme-aurora .btn .subtxt,
+    body.theme-aurora .time,
+    body.theme-aurora .callout .small{ color: rgba(226,243,255,.82); }
+    body.theme-aurora .songtitle{ color:#93c5fd; }
 
     /* ❄️ Light snow */
     .snowA,.snowB{
@@ -165,6 +289,58 @@
     @media (max-width: 680px){
       .wrap{ padding-top: 92px; }
     }
+
+    .design-switcher{
+      margin: 16px auto 12px;
+      padding: 12px;
+      border-radius: 18px;
+      background: rgba(255,255,255,.76);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow2);
+      backdrop-filter: blur(6px);
+    }
+    .design-switcher h2{
+      margin: 0 0 10px;
+      font-size: 18px;
+      letter-spacing: .3px;
+      display:flex;
+      align-items:center;
+      gap:8px;
+    }
+    .design-switcher h2 span{ font-size: 13px; color: rgba(16,50,58,.70); font-weight:600; }
+    .theme-grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 10px;
+    }
+    .theme-card{
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 10px;
+      background: rgba(255,255,255,.86);
+      box-shadow: 0 8px 24px rgba(0,0,0,.06);
+      display:flex;
+      flex-direction:column;
+      gap:6px;
+      transition: transform .12s ease, box-shadow .12s ease;
+    }
+    .theme-card:hover{ transform: translateY(-2px); box-shadow: 0 12px 28px rgba(0,0,0,.10); }
+    .theme-card strong{ display:block; }
+    .theme-card .microcopy{ font-size: 13px; color: rgba(16,50,58,.68); line-height:1.4; }
+    .theme-card button{
+      margin-top: 4px;
+      border: 0;
+      border-radius: 999px;
+      padding: 10px;
+      font-weight: 900;
+      letter-spacing: .2px;
+      cursor: pointer;
+      background: linear-gradient(180deg, var(--green), color-mix(in srgb, var(--green) 70%, #ffffff 30%));
+      color: white;
+      box-shadow: 0 10px 26px rgba(0,0,0,.12);
+      transition: transform .08s ease;
+    }
+    .theme-card button[aria-pressed="true"]{ outline: 3px solid rgba(16,50,58,.14); transform: translateY(-1px); }
 
     header{
       text-align:center;
@@ -551,7 +727,7 @@
   </style>
 </head>
 
-<body>
+<body class="theme-classic">
   <div class="snowA" aria-hidden="true"></div>
   <div class="snowB" aria-hidden="true"></div>
 
@@ -580,6 +756,32 @@
 
       <a class="listen-cta" href="#new-song">Listen</a>
     </header>
+
+    <div class="design-switcher" aria-label="Choose a holiday design for this page">
+      <h2>Alternate holiday looks <span id="themeLabel">(Classic Lodge)</span></h2>
+      <div class="theme-grid">
+        <div class="theme-card">
+          <strong>Classic Lodge</strong>
+          <div class="microcopy">Plaid-and-pine warmth with the string lights still glowing.</div>
+          <button type="button" data-theme="theme-classic" aria-pressed="true">Use this look</button>
+        </div>
+        <div class="theme-card">
+          <strong>Midnight Carol</strong>
+          <div class="microcopy">Deep midnight blues, golden candlelight, and a starry sky mood.</div>
+          <button type="button" data-theme="theme-midnight" aria-pressed="false">Use this look</button>
+        </div>
+        <div class="theme-card">
+          <strong>Candy Cloud</strong>
+          <div class="microcopy">Playful pinks and mint greens with soft marshmallow gradients.</div>
+          <button type="button" data-theme="theme-marshmallow" aria-pressed="false">Use this look</button>
+        </div>
+        <div class="theme-card">
+          <strong>Northern Lights</strong>
+          <div class="microcopy">An aurora of shifting color, glassy cards, and cosmic shimmer.</div>
+          <button type="button" data-theme="theme-aurora" aria-pressed="false">Blow my mind</button>
+        </div>
+      </div>
+    </div>
 
     <div class="divider"></div>
 
@@ -746,6 +948,29 @@
   </div>
 
   <script>
+    const body = document.body;
+    const themeButtons = document.querySelectorAll('[data-theme]');
+    const themeLabel = document.getElementById('themeLabel');
+    const themes = ["theme-classic","theme-midnight","theme-marshmallow","theme-aurora"];
+    const themeNames = {
+      "theme-classic":"Classic Lodge",
+      "theme-midnight":"Midnight Carol",
+      "theme-marshmallow":"Candy Cloud",
+      "theme-aurora":"Northern Lights"
+    };
+
+    function setTheme(theme){
+      themes.forEach(t => body.classList.remove(t));
+      body.classList.add(theme);
+      themeButtons.forEach(btn => {
+        const isActive = btn.dataset.theme === theme;
+        btn.setAttribute('aria-pressed', isActive ? 'true' : 'false');
+      });
+      themeLabel.textContent = `(${themeNames[theme] || 'Holiday'})`;
+    }
+
+    themeButtons.forEach(btn => btn.addEventListener('click', () => setTheme(btn.dataset.theme)));
+
     document.getElementById("year").textContent = new Date().getFullYear();
 
     const audio = document.getElementById("audio");
@@ -762,6 +987,8 @@
         }
       }catch(e){}
     });
+
+    setTheme("theme-classic");
 
     audio.addEventListener("pause", () => playBtn.textContent = "▶ Play");
     audio.addEventListener("play", () => playBtn.textContent = "⏸ Pause");
