@@ -31,6 +31,9 @@
       --white:#ffffff;
       --cream:#fff7e6;
       --ink:#10323a;
+      --ink-strong: rgba(16,50,58,.88);
+      --ink-soft: rgba(16,50,58,.72);
+      --ink-faint: rgba(16,50,58,.68);
       --card:rgba(255,255,255,.78);
       --border:rgba(16,50,58,.12);
       --shadow:0 18px 55px rgba(0,0,0,.14);
@@ -38,6 +41,11 @@
       --radius:26px;
       --gold:#ffd45a;
       --link:#0a5bd6;
+      --bg:
+        radial-gradient(1100px 700px at 15% 8%, rgba(193,18,47,.16), transparent 60%),
+        radial-gradient(1100px 700px at 90% 12%, rgba(11,122,59,.16), transparent 60%),
+        radial-gradient(900px 600px at 60% 85%, rgba(255,210,90,.18), transparent 55%),
+        linear-gradient(180deg, #f7fbff, #ffffff);
     }
 
     *{ box-sizing:border-box; }
@@ -46,12 +54,120 @@
       margin:0;
       font-family: "Nunito", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       color: var(--ink);
-      background:
+      background: var(--bg);
+      overflow-x:hidden;
+      position: relative;
+    }
+
+    /* Design variations */
+    body[data-design="classic"]{
+      --bg:
         radial-gradient(1100px 700px at 15% 8%, rgba(193,18,47,.16), transparent 60%),
         radial-gradient(1100px 700px at 90% 12%, rgba(11,122,59,.16), transparent 60%),
         radial-gradient(900px 600px at 60% 85%, rgba(255,210,90,.18), transparent 55%),
         linear-gradient(180deg, #f7fbff, #ffffff);
-      overflow-x:hidden;
+      --card:rgba(255,255,255,.78);
+      --border:rgba(16,50,58,.12);
+      --shadow:0 18px 55px rgba(0,0,0,.14);
+      --shadow2:0 10px 35px rgba(0,0,0,.10);
+      --radius:26px;
+      --ink:#10323a;
+      --ink-strong: rgba(16,50,58,.88);
+      --ink-soft: rgba(16,50,58,.72);
+      --ink-faint: rgba(16,50,58,.68);
+      --red:#c1122f;
+      --green:#0b7a3b;
+      --link:#0a5bd6;
+    }
+
+    body[data-design="postcard"]{
+      --bg:
+        radial-gradient(1200px 720px at 10% 20%, rgba(255,244,230,.65), transparent 60%),
+        radial-gradient(1100px 720px at 90% 0%, rgba(193,18,47,.10), transparent 60%),
+        linear-gradient(180deg, #fef9f3, #f7efe3);
+      --card:rgba(255,255,255,.90);
+      --border:rgba(193,18,47,.18);
+      --shadow:0 18px 60px rgba(193,18,47,.12);
+      --shadow2:0 10px 38px rgba(193,18,47,.10);
+      --radius:18px;
+      --ink:#2d1f16;
+      --ink-strong: rgba(45,31,22,.88);
+      --ink-soft: rgba(45,31,22,.70);
+      --ink-faint: rgba(45,31,22,.60);
+      --red:#b72c26;
+      --green:#0f6f42;
+      --link:#b72c26;
+    }
+
+    body[data-design="aurora"]{
+      --bg:
+        radial-gradient(900px 600px at 10% 0%, rgba(82,255,221,.18), transparent 60%),
+        radial-gradient(1000px 640px at 90% 10%, rgba(118,176,255,.20), transparent 60%),
+        radial-gradient(1100px 680px at 50% 90%, rgba(255,110,179,.18), transparent 60%),
+        linear-gradient(180deg, #060b1f, #0b1f36 45%, #0d0b28);
+      --card:rgba(14,28,48,.78);
+      --border:rgba(255,255,255,.12);
+      --shadow:0 18px 65px rgba(0,0,0,.42);
+      --shadow2:0 10px 40px rgba(0,0,0,.32);
+      --radius:22px;
+      --ink:#e6f7ff;
+      --ink-strong: rgba(230,247,255,.92);
+      --ink-soft: rgba(230,247,255,.74);
+      --ink-faint: rgba(230,247,255,.68);
+      --red:#ff5fa2;
+      --green:#4be3c2;
+      --gold:#8ef0ff;
+      --link:#8ef0ff;
+    }
+
+    body[data-design="wonder"]{
+      --bg:
+        radial-gradient(900px 640px at 15% 0%, rgba(255,255,255,.10), transparent 60%),
+        radial-gradient(900px 640px at 80% 15%, rgba(255,255,255,.12), transparent 60%),
+        radial-gradient(1200px 800px at 50% 100%, rgba(255,215,0,.16), transparent 50%),
+        linear-gradient(135deg, #060b1a, #0a1f2d 40%, #301f5b 70%, #721c5c);
+      --card:rgba(255,255,255,.16);
+      --border:rgba(255,255,255,.18);
+      --shadow:0 28px 65px rgba(0,0,0,.55);
+      --shadow2:0 16px 45px rgba(0,0,0,.45);
+      --radius:24px;
+      --ink:#f6faff;
+      --ink-strong: rgba(246,250,255,.95);
+      --ink-soft: rgba(246,250,255,.78);
+      --ink-faint: rgba(246,250,255,.68);
+      --red:#ff7a3c;
+      --green:#34ffc9;
+      --gold:#ffd45a;
+      --link:#ffd45a;
+      backdrop-filter: none;
+    }
+
+    body[data-design="postcard"] .card{ background: rgba(255,255,255,.94); }
+    body[data-design="postcard"] .wire{ border-top-color: rgba(183,44,38,.22); }
+    body[data-design="postcard"] .bulb{ filter: saturate(1.16); }
+
+    body[data-design="aurora"] .lights{ opacity:.55; mix-blend-mode: screen; }
+    body[data-design="aurora"] .bulb{ box-shadow: 0 0 0 3px rgba(255,255,255,.32), 0 10px 26px rgba(0,0,0,.24); }
+    body[data-design="aurora"] .bulb:after{ opacity:.75; filter: blur(16px); }
+    body[data-design="aurora"] .card{ background: var(--card); border-color: rgba(255,255,255,.18); }
+
+    body[data-design="wonder"] .lights{ opacity:.35; mix-blend-mode: screen; }
+    body[data-design="wonder"] .snowA,
+    body[data-design="wonder"] .snowB{ opacity:.75; filter: drop-shadow(0 0 12px rgba(255,255,255,.25)); }
+    body[data-design="wonder"]::after{
+      content:"";
+      position:fixed;
+      inset:0;
+      z-index:1;
+      pointer-events:none;
+      background: conic-gradient(from 120deg at 50% 40%, rgba(255,122,60,.35), rgba(52,255,201,.26), rgba(255,212,90,.28), rgba(114,28,92,.35), rgba(255,122,60,.35));
+      mix-blend-mode: screen;
+      animation: auroraFlow 16s ease-in-out infinite alternate;
+    }
+    @keyframes auroraFlow{
+      0%{ transform: translateY(-6%) rotate(0deg); opacity:.32; }
+      50%{ transform: translateY(2%) rotate(3deg); opacity:.46; }
+      100%{ transform: translateY(8%) rotate(-4deg); opacity:.38; }
     }
 
     /* ❄️ Light snow */
@@ -193,10 +309,52 @@
       text-shadow: 0 10px 40px rgba(0,0,0,.10);
     }
 
+    .design-picker{
+      margin: 18px auto 0;
+      padding: 14px;
+      border-radius: 18px;
+      background: var(--card);
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow2);
+      backdrop-filter: blur(6px);
+      display:flex;
+      flex-direction:column;
+      gap: 12px;
+    }
+    .design-picker .hint{ font-size: 14px; color: var(--ink-soft); }
+    .design-grid{
+      display:grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px,1fr));
+      gap: 10px;
+    }
+    .design-option{
+      width:100%;
+      text-align:left;
+      border-radius: 14px;
+      padding: 12px 14px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: inherit;
+      box-shadow: 0 12px 32px rgba(0,0,0,.08);
+      cursor:pointer;
+      transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease, background .12s ease;
+      display:flex;
+      flex-direction:column;
+      gap: 6px;
+    }
+    .design-option strong{ font-weight: 900; letter-spacing:.2px; }
+    .design-option span{ font-size: 13px; color: var(--ink-soft); }
+    .design-option:hover{ transform: translateY(-2px); box-shadow: 0 18px 42px rgba(0,0,0,.12); }
+    .design-option.active{
+      border-color: var(--green);
+      background: linear-gradient(180deg, var(--card), rgba(255,255,255,.84));
+      box-shadow: 0 16px 38px rgba(0,0,0,.12);
+    }
+
     .sub{
       margin: 14px auto 0;
       max-width: 78ch;
-      color: rgba(16,50,58,.88);
+      color: var(--ink-strong);
       font-size: 16px;
       line-height: 1.55;
       background: rgba(255,255,255,.72);
@@ -212,7 +370,7 @@
       font-family: "Nunito", system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial;
       font-weight: 700;
       letter-spacing: .1px;
-      color: #0f3f37;
+      color: var(--ink-strong);
       text-shadow: 0 2px 14px rgba(16,50,58,.12);
     }
 
@@ -223,7 +381,7 @@
       font-weight: 900;
       letter-spacing: .2px;
       text-align:right;
-      color: rgba(16,50,58,.86);
+      color: var(--ink-strong);
     }
 
     .listen-cta{
@@ -301,7 +459,7 @@
       display:flex; justify-content:space-between; align-items:center;
       padding: 12px 14px;
       font-size: 13px;
-      color: rgba(16,50,58,.72);
+      color: var(--ink-soft);
       background: rgba(255,255,255,.88);
       border-top: 1px solid var(--border);
     }
@@ -332,8 +490,8 @@
       border: 1px solid rgba(16,50,58,.14);
       box-shadow: 0 12px 40px rgba(0,0,0,.09);
     }
-    .callout strong{ color: rgba(10,35,35,.96); }
-    .callout .small{ margin-top: 6px; color: rgba(16,50,58,.72); font-size: 14px; }
+    .callout strong{ color: var(--ink-strong); }
+    .callout .small{ margin-top: 6px; color: var(--ink-soft); font-size: 14px; }
 
     .player{
       padding: 12px;
@@ -350,7 +508,7 @@
       display:flex; flex-direction:column; gap: 2px;
     }
     .track .name{ font-weight: 900; letter-spacing:.2px; }
-    .track .meta{ font-size: 13px; color: rgba(16,50,58,.68); }
+    .track .meta{ font-size: 13px; color: var(--ink-faint); }
 
     .playBtn{
       border: 0;
@@ -391,7 +549,7 @@
     .lyrics summary:after{
       content:"+";
       font-weight: 900;
-      color: rgba(16,50,58,.68);
+      color: var(--ink-faint);
       transition: transform .12s ease;
     }
     .lyrics[open] summary:after{ content:"–"; transform: translateY(-1px); }
@@ -401,14 +559,14 @@
       display:flex;
       flex-direction:column;
       gap: 10px;
-      color: rgba(16,50,58,.86);
+      color: var(--ink-strong);
       line-height: 1.5;
     }
 
     .buttons-hint{
       margin: 16px 4px 8px;
       font-weight: 800;
-      color: rgba(10,35,35,.90);
+      color: var(--ink-strong);
       line-height: 1.4;
     }
 
@@ -423,7 +581,7 @@
       padding: 14px 14px;
       border: 1px solid rgba(16,50,58,.14);
       background: rgba(255,255,255,.92);
-      color: rgba(10,35,35,.92);
+      color: var(--ink-strong);
       display:flex; align-items:center; justify-content:space-between; gap: 12px;
       box-shadow: 0 10px 30px rgba(0,0,0,.08);
       transition: transform .10s ease, box-shadow .10s ease, filter .10s ease;
@@ -435,7 +593,7 @@
     }
     .btn .left{ display:flex; flex-direction:column; gap:3px; }
     .btn .title{ font-weight: 900; letter-spacing:.2px; }
-    .btn .subtxt{ font-size: 13px; color: rgba(16,50,58,.68); }
+    .btn .subtxt{ font-size: 13px; color: var(--ink-faint); }
     .btn .arrow{ font-size: 18px; opacity:.75; }
 
     .btn.bandcamp{ border-left: 10px solid #b66dff; }
@@ -463,7 +621,7 @@
     }
     .songbook .hint{
       font-size: 13px;
-      color: rgba(16,50,58,.70);
+      color: var(--ink-soft);
     }
     .songlist{
       border-radius: 18px;
@@ -494,7 +652,7 @@
       border-radius: 10px;
       display:grid; place-items:center;
       font-weight: 900;
-      color: rgba(16,50,58,.88);
+      color: var(--ink-strong);
       background:
         repeating-linear-gradient(45deg, rgba(193,18,47,.18), rgba(193,18,47,.18) 8px, rgba(255,255,255,.7) 8px, rgba(255,255,255,.7) 16px);
       border: 1px solid rgba(16,50,58,.10);
@@ -523,24 +681,24 @@
       border-radius: 999px;
       border: 1px solid rgba(16,50,58,.14);
       background: rgba(255,210,90,.70);
-      color: rgba(16,50,58,.88);
+      color: var(--ink-strong);
     }
     .time{
       text-align:right;
       font-variant-numeric: tabular-nums;
-      color: rgba(16,50,58,.72);
+      color: var(--ink-soft);
       font-weight: 800;
     }
     .songnote{
       margin-top: 10px;
       font-size: 13px;
-      color: rgba(16,50,58,.72);
+      color: var(--ink-soft);
       display:flex;
       justify-content:space-between;
       gap:10px;
       flex-wrap:wrap;
     }
-    .songnote a{ color: rgba(16,50,58,.85); }
+    .songnote a{ color: var(--ink-strong); }
 
     footer{
       margin-top: 18px;
@@ -551,7 +709,7 @@
   </style>
 </head>
 
-<body>
+<body data-design="classic">
   <div class="snowA" aria-hidden="true"></div>
   <div class="snowB" aria-hidden="true"></div>
 
@@ -577,6 +735,31 @@
         <p>These songs are for the people we love, inspired by candy sleds, Christmas dragons, and the occasional mellow double-guitar solo from Kris Kringle himself.</p>
          <span class="signature">Love - Rae, Robby, Five, Sadie, Emma and Leo</span>
         </div>
+
+      <div class="design-picker" aria-label="Design explorer">
+        <div>
+          <strong>Design explorer</strong>
+          <div class="hint">Swap between four holiday looks — two classic, one unexpected, and one over-the-top.</div>
+        </div>
+        <div class="design-grid" role="list">
+          <button class="design-option" type="button" data-design-choice="classic" aria-pressed="true" role="listitem">
+            <strong>Classic Hearth</strong>
+            <span>Traditional red-and-green warmth with cozy snow and lights.</span>
+          </button>
+          <button class="design-option" type="button" data-design-choice="postcard" aria-pressed="false" role="listitem">
+            <strong>Storybook Postcard</strong>
+            <span>Vintage parchment glow, ribbon accents, and nostalgic garlands.</span>
+          </button>
+          <button class="design-option" type="button" data-design-choice="aurora" aria-pressed="false" role="listitem">
+            <strong>Neon Aurora</strong>
+            <span>Non-traditional Northern Lights palette with glassy cards.</span>
+          </button>
+          <button class="design-option" type="button" data-design-choice="wonder" aria-pressed="false" role="listitem">
+            <strong>Cosmic Wonder</strong>
+            <span>Mind-blowing conic glows, shimmering snow, and luxe highlights.</span>
+          </button>
+        </div>
+      </div>
 
       <a class="listen-cta" href="#new-song">Listen</a>
     </header>
@@ -744,6 +927,28 @@
       </section>
     </div>
   </div>
+
+  <script>
+    const designButtons = document.querySelectorAll('[data-design-choice]');
+
+    const applyDesign = (choice) => {
+      document.body.setAttribute('data-design', choice);
+      designButtons.forEach((btn) => {
+        const isActive = btn.dataset.designChoice === choice;
+        btn.classList.toggle('active', isActive);
+        btn.setAttribute('aria-pressed', String(isActive));
+      });
+      try{ localStorage.setItem('grantmas-design', choice); }catch(e){}
+    };
+
+    const storedDesign = (() => {
+      try{ return localStorage.getItem('grantmas-design'); }
+      catch(e){ return null; }
+    })();
+
+    applyDesign(storedDesign || 'classic');
+    designButtons.forEach((btn) => btn.addEventListener('click', () => applyDesign(btn.dataset.designChoice)));
+  </script>
 
   <script>
     document.getElementById("year").textContent = new Date().getFullYear();
