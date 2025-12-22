@@ -767,6 +767,24 @@
     window.addEventListener('load', () => {
       gtag('js', new Date());
       gtag('config', 'G-M75HKBLCDD');
+
+      const currentOrigin = window.location.origin;
+      document.querySelectorAll('a[href]').forEach(anchor => {
+        try{
+          const url = new URL(anchor.href, window.location.href);
+          if(url.origin === currentOrigin){
+            return;
+          }
+
+          anchor.addEventListener('click', () => {
+            gtag('event', 'click', {
+              event_category: 'outbound',
+              event_label: url.href,
+              transport_type: 'beacon'
+            });
+          });
+        }catch(e){}
+      });
     });
   </script>
 </body>
